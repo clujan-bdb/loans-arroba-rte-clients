@@ -13,7 +13,9 @@ jobs:
                   python-version: ${{ vars.PYTHON_VERSION }}
 
             - name: Install test dependencies
-              run: pip install -r ${{ vars.DEV_REQUIREMENTS }}
+              run: |
+                pip install -r ${{ vars.DEV_REQUIREMENTS }}
+                pip list
 
             - name: Run coverage of unitary tests
               run: pytest --cov=${{ vars.SOURCE_PATH }}/ ${{ vars.TEST_UNITARY_PATH}}/ --cov-fail-under=${{ vars.UNITARY_COVERAGE }}
