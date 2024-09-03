@@ -11,7 +11,11 @@
 - `PYLINT_SCORE`
 
 ## ToDo
-- [ ] config Pylint
 - [ ] config requirements
+- [ ] config Pylint
 - [ ] config CI/CD
 - [ ] test docker-compose
+
+
+### Contributing, branchs definitions and pull requests
+![Branches](assets/branches.drawio.png)
