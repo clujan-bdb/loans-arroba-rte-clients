@@ -1,0 +1,25 @@
+name: Continuos Integration
+on: push
+jobs:
+    continuos-integration:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Intall Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: ${{ vars.PYTHON_VERSION }}
+
+            - name: Install test dependencies
+              run: |
+                pip install -r ${{ vars.DEV_REQUIREMENTS }}
+                pip list
+
+            - name: Run coverage of unitary tests
+              run: pytest --cov=${{ vars.SOURCE_PATH }}/ ${{ vars.TEST_UNITARY_PATH}}/ --cov-fail-under=${{ vars.UNITARY_COVERAGE }}
+
+            - name: Run integration tests
+              run: pytest ${{ vars.TEST_INTEGRATION_PATH }}
+        
