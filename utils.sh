@@ -10,8 +10,8 @@ SRC_FOLDER="app"
 PYTHON_VERSION="3.12"
 TEST_UNITARY_PATH="tests/unitary"
 TEST_INTEGRATION_PATH="tests/integration"
-REQUIREMENTS_PROD="config/dev-requirements.txt"
-REQUIREMENTS_DEV="config/prod-requirements.txt"
+REQUIREMENTS_DEV="config/dev-requirements.txt"
+REQUIREMENTS_PROD="config/prod-requirements.txt"
 ENTRY_POINT="app/main.py"
 COV_PERCENT="90"
 PYLINT_SCORE=8.0
@@ -125,7 +125,7 @@ integration() {
 test() {
     venv_activate
     if [ -n "$@" ]; then
-        pytest -vv --tb=short $SRC_FOLDER/ $TEST_UNITARY_PATH/ "$@"
+        pytest -vv $SRC_FOLDER/ $TEST_UNITARY_PATH/ "$@"
     else
         pytest -vv --tb=short --cov=$SRC_FOLDER/ $TEST_UNITARY_PATH/ --cov-fail-under=$COV_PERCENT
     fi
